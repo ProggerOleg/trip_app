@@ -1,0 +1,64 @@
+.area {
+    position: relative;
+	border-radius: 25px;
+	-webkit-box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+	        box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+	background-color: #222831;
+	color: #ffffff;
+	height: 100px;
+    margin-bottom: 25px;
+}
+.search-box{
+    width: 100%;
+    height: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.search-box .fa-location-dot {
+    height: 40px;
+}
+.search-box .fa-location-dot path {
+    fill: red;
+}
+.search-box input {
+    text-align: center;
+    width: 50%;
+    font-size: 28px;
+    font-weight: 500;
+    background-color: #222831;
+    height: 40px;
+    border: 25px;
+    color: whitesmoke;
+    border-width: 0 0 2px;
+    outline: none;
+    border-color: #1890ff;
+}
+
+.search-box input::placeholder {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 500;
+    color: whitesmoke;
+    text-transform: capitalize;
+    background-color: #222831;
+}
+.search-box input:focus{
+    border-bottom: 1px solid #1890ff;
+}
+
+.search-box button {
+    width: 40px;
+    height: 40px;
+    background: none;
+}
+.search-box button svg {
+    height: 25px;
+}
+.search-box button svg path {
+    fill: white;
+}
+
