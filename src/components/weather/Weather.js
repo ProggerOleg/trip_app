@@ -2,11 +2,15 @@ import WeatherCard from "./weatherCard/WeatherCard";
 import WeatherInfo from "./weatherInfo/WeatherInfo";
 
 
-const Weather = () => {
+const Weather = (props) => {
+    const {weather, city} = props;
+
     return (
         <div className="container">
-            <WeatherCard/>
-            <WeatherInfo/>
+            <WeatherCard 
+                weather={weather}
+                city={city}/>
+            <WeatherInfo weather={weather}/>
         </div>
     )
 }

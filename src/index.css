@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
+
+:root {
+  --gradient: linear-gradient(135deg, #72edf2 10%, #5151e5 100%);
+}
+
+* {
+  line-height: 1.25em;
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +21,30 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.App{
+  margin: 0 auto;
+  display: flex; /* Используем flexbox для расположения блоков в ряд */
+  flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+}
+.wrapper{
+  padding: 30px 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper{
+      flex: 100%; /* На мобильных устройствах блоки занимают всю ширину */
+  }
+}
+.gap-15{
+  gap: 15px;
+}
+.gap-30{
+  gap: 30px;
+}
+.mb-3{
+  margin-bottom: 30px ;
+}
+.mb-5{
+  margin-bottom: 50px ;
 }
