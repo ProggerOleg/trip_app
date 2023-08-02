@@ -43,6 +43,40 @@ const WeatherCard = (props) => {
       </div>
       <div className="widget">
         <h2>Sunday</h2>
+        <div className="widget_weather">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+            alt=""
+          />
+          <div className="widget_temperature">
+            24
+            <div className="celsius">°C</div>
+          </div>
+        </div>
+
+        <div className="widget_city mb-5">Berlin</div>
+      </div>
+      <div className="timer">
+        <div className="timer_col">
+          <b>30</b>
+          <br />
+          days
+        </div>
+        <div className="timer_col">
+          <b>10</b>
+          <br />
+          hours
+        </div>
+        <div className="timer_col">
+          <b>23</b>
+          <br />
+          minutes
+        </div>
+        <div className="timer_col">
+          <b>34</b>
+          <br />
+          seconds
+        </div>
       </div>
     </section>
   );

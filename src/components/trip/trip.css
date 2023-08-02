@@ -35,12 +35,15 @@
 }
 .trip-cards{
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-start
+}
+.slider {
+    position: relative;
+    overflow: hidden;
 }
 .trip-card{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    width: 12rem;
+    width: 14rem;
     min-height: 250px;
     border: 1px solid rgba(0,0,0,0.1);
 }
@@ -66,8 +69,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 200px;
+    width: 14rem;
+    height: 14rem;
     font-size: 20px;
     font-weight: 600;
     background-color: #eeeeee;
@@ -81,4 +84,22 @@
 }
 .week-weather h3{
     font-size: 400;
+}
+.week_forecast{
+    display: flex;
+    justify-content: space-around;
+}
+.day_forecast{
+    text-align: center;
+}
+.day_forecast .day_of_week{
+    color: rgba(0,0,0,0.5);
+    font-weight: 300;
+}
+.day_forecast img{
+    width: 5rem;
+    height: 5rem;
+}
+.day_temperature{
+    color: #35424d;
 }

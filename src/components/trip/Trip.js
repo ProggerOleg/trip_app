@@ -1,7 +1,9 @@
 import React from "react";
-import "./trip.css";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
+import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import "./trip.css";
+
 const Trip = () => {
   return (
     <section className="trip wrapper">
@@ -12,7 +14,13 @@ const Trip = () => {
         <FiSearch size={"30px"} />
         <input type="text" placeholder="Search your trip" />
       </div>
-      <div className="trip-cards gap-30 mb-5">
+      <div className="trip-cards slider gap-30 mb-5">
+        {/* <a href="#" class="control_next">
+          <GrFormNext />
+        </a>
+        <a href="#" class="control_prev">
+          <GrFormPrevious />
+        </a> */}
         <div className="trip-card">
           <img
             src="https://media.cntraveler.com/photos/5a85a6cc833f8a477b94953e/master/w_1920%2Cc_limit/Musee-Picasso_Fabien-Campoverde_2018_BH4A5113fab.jpg"
@@ -43,7 +51,64 @@ const Trip = () => {
       </div>
       <div className="week-weather">
         <h3>Week</h3>
-        <div style={{ height: "130px" }}></div>
+        <div className="week_forecast gap-30" style={{ height: "130px" }}>
+          <div className="day_forecast">
+            <div className="day_of_week">Monday</div>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+              alt="Weather Icon"
+            />
+            <div className="day_temperature">28C/21C</div>
+          </div>
+          <div className="day_forecast">
+            <div className="day_of_week">Monday</div>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+              alt="Weather Icon"
+            />
+            <div className="day_temperature">28C/21C</div>
+          </div>
+          <div className="day_forecast">
+            <div className="day_of_week">Monday</div>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+              alt="Weather Icon"
+            />
+            <div className="day_temperature">28C/21C</div>
+          </div>
+          <div className="day_forecast">
+            <div className="day_of_week">Monday</div>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+              alt="Weather Icon"
+            />
+            <div className="day_temperature">28C/21C</div>
+          </div>
+          <div className="day_forecast">
+            <div className="day_of_week">Monday</div>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+              alt="Weather Icon"
+            />
+            <div className="day_temperature">28C/21C</div>
+          </div>
+          <div className="day_forecast">
+            <div className="day_of_week">Monday</div>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+              alt="Weather Icon"
+            />
+            <div className="day_temperature">28C/21C</div>
+          </div>
+          <div className="day_forecast">
+            <div className="day_of_week">Monday</div>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
+              alt="Weather Icon"
+            />
+            <div className="day_temperature">28C/21C</div>
+          </div>
+        </div>
       </div>
     </section>
   );

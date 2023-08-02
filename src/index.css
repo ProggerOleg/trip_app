@@ -28,7 +28,7 @@ code {
   flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
 }
 .wrapper{
-  padding: 30px 60px;
+  padding: 1rem 2rem;
 }
 
 @media screen and (max-width: 768px) {
