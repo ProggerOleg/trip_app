@@ -1,18 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMapPin } from "@fortawesome/free-solid-svg-icons";
-import fontawesome from "@fortawesome/fontawesome";
 import "./weather.css";
 
-fontawesome.library.add(faSun);
 
 const WeatherCard = (props) => {
-  const { weather, city } = props;
+  const { weather, trip } = props;
 
-  const temperature = Array.isArray(weather) ? weather[0].temperature : "29";
-  const location = city ? city : "Paris, FR";
-  const weatherDesc = Array.isArray(weather) ? weather[0].weather : "Sunny";
-
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const today = new Date();
   const dayOfWeek = daysOfWeek[today.getDay()];
   const date = new Date().toLocaleDateString();
@@ -20,6 +12,9 @@ const WeatherCard = (props) => {
   return (
     <section className="weather wrapper">
       <div className="background-image">
+        <img src="https://media.istockphoto.com/id/1372630904/ru/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F/%D1%81%D1%87%D0%B0%D1%81%D1%82%D0%BB%D0%B8%D0%B2%D0%BE%D0%B5-%D0%BC%D0%B8%D0%BB%D0%BE%D0%B5-%D0%BB%D0%B8%D1%86%D0%BE-%D0%BF%D0%B8%D0%BD%D0%B3%D0%B2%D0%B8%D0%BD%D0%B0-%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80-%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%84%D0%B8%D0%BB%D1%8C%D0%BC-%D0%BA%D0%B0%D0%B2%D0%B0%D0%B8%D0%B8-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80.jpg?s=612x612&w=0&k=20&c=Q1GyvFJBupmIQi-unOL_B8yI1OsK3vkJvapquoG1SWk="
+          alt="icon"
+          className="penguin" />
         <img
           src="https://clipart-library.com/img/1328334.png"
           alt=""
@@ -42,19 +37,18 @@ const WeatherCard = (props) => {
         />
       </div>
       <div className="widget">
-        <h2>Sunday</h2>
+        <h2>{dayOfWeek}</h2>
         <div className="widget_weather">
           <img
             src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
             alt=""
           />
           <div className="widget_temperature">
-            24
+            {weather.temperature}
             <div className="celsius">°C</div>
           </div>
         </div>
-
-        <div className="widget_city mb-5">Berlin</div>
+        <div className="widget_city mb-5">{trip.city}</div>
       </div>
       <div className="timer">
         <div className="timer_col">

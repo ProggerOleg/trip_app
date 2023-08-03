@@ -6,6 +6,7 @@
 .trip.header{
     font-size: 30px;
     min-width: 300px;
+    padding-top: 10px;
 }
 .search{
     display: flex;
@@ -64,6 +65,7 @@
 }
 .trip-date{
     color: rgba(0,0,0,0.5);
+    padding: 10px 0;
 }
 .trip-add{
     display: flex;

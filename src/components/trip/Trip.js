@@ -1,10 +1,11 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
-import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import "./trip.css";
 
-const Trip = () => {
+const Trip = (props) => {
+  const { setCity } = props;
+
   return (
     <section className="trip wrapper">
       <div className="trip header mb-5">

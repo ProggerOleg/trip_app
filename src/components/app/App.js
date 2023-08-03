@@ -1,81 +1,31 @@
 import { useState, useEffect } from "react";
-
 import useWeatherService from "../../services/WeatherService";
 import Trip from "../trip/Trip";
-
 import Weather from "../trip/Weather";
-import SearchCity from "../searchCity/SearchCity";
 
 function App() {
-  const [location, setLocation] = useState({});
-  const [city, setCity] = useState("");
+  const [trip, setTrip] = useState({ city: "Kyiv", date1: "2022-10-21", date2: "2022-10-28" });
+  const [weekWeather, setWeekWeather] = useState([])
   const [weather, setWeather] = useState({});
 
-  const { getForecast, getLocationByCity } = useWeatherService();
+  const { getForecast, getTodaysWeather } = useWeatherService();
 
   useEffect(() => {
-    onLocationClick(location);
-    // eslint-disable-next-line
-  }, []);
-
-  const onLocationClick = (location) => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
-
-    if (location.latitude && location.longitude) {
-      getForecast(location.latitude, location.longitude)
-        .then(({ city, weather }) => {
-          setCity(city);
-          setWeather(everyEighth(weather));
-        })
-        .catch((error) => console.log(error));
-    }
-  };
-
-  const onSearchCity = (city) => {
-    getLocationByCity(city)
-      .then(({ lon, lat }) => {
-        getForecast(lat, lon)
-          .then(({ city, weather }) => {
-            setCity(city);
-            setWeather(everyEighth(weather));
-          })
-          .catch((error) => console.log(error));
+    getTodaysWeather(trip.city)
+      .then(item => {
+        setWeather({ temperature: Math.round(item.days[0].temp) })
       })
-      .catch((error) => console.log(error));
-  };
+      .catch(e => console.log(e))
 
-  const everyEighth = (arr) => {
-    return arr.filter((_, i) => (i + 1) % 8 === 0);
-  };
+    getForecast(trip).then(item => {
+      setWeekWeather(item.days)
+    })
+  }, [trip])
 
   return (
     <div className="App">
-      {/* <SearchCity 
-          onLocationClick={onLocationClick}
-          city={city}
-          location={location}
-          setCity={setCity}
-          onSearchCity={onSearchCity}
-      />
-      <Weather
-          city={city}
-          weather={weather}/> */}
-      <Trip />
-      <Weather />
+      <Trip setTrip={setTrip} />
+      <Weather weather={weather} trip={trip} />
     </div>
   );
 }
