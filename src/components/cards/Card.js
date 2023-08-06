@@ -3,12 +3,9 @@ import React from 'react'
 const Card = (props) => {
     const { setTrip, image, city, date1, date2 } = props;
 
-    const onTripChange = () => {
-        setTrip(image, city, date1, date2)
-    }
 
     return (
-        <div className="trip-card" onClick={onTripChange}>
+        <div className="trip-card" onClick={() => setTrip({ city, date1, date2 })}>
             <img
                 src={image}
                 alt="trip"
