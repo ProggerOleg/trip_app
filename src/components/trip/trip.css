@@ -1,4 +1,5 @@
 .trip.wrapper{
+    width: 100%;
     flex: 55%; 
     min-height: 200px; 
     box-sizing: border-box;
@@ -36,11 +37,7 @@
 }
 .trip-cards{
     display: flex;
-    justify-content: flex-start
-}
-.slider {
-    position: relative;
-    overflow: hidden;
+    justify-content: flex-start;
 }
 .trip-card{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -89,6 +86,7 @@
 }
 .week_forecast{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 .day_forecast{
@@ -99,8 +97,8 @@
     font-weight: 300;
 }
 .day_forecast img{
-    width: 5rem;
-    height: 5rem;
+    width: 3rem;
+    height: 3rem;
 }
 .day_temperature{
     color: #35424d;

@@ -26,6 +26,7 @@ code {
   margin: 0 auto;
   display: flex; /* Используем flexbox для расположения блоков в ряд */
   flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+  position: relative;
 }
 .wrapper{
   padding: 1rem 2rem;

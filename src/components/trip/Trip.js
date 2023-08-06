@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import Card from "../cards/Card";
+import Day from "../cards/Day";
+import Modal from "../modal/Modal"
+import Carousel from '../Carousel/Carousel'
+import IMG from "../../assets/Images";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import "./trip.css";
 
 const Trip = (props) => {
-  const { setCity } = props;
+  const { weekWeather, setTrip, setModal } = props;
+  const img = new IMG()
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  const dateToDayOfWeek = (date) => {
+    let [year, month, day] = date.split("-");
+    let dateObject = new Date(year, month - 1, day);
+    return dateObject.getDay()
+  }
 
   return (
     <section className="trip wrapper">
@@ -16,102 +29,36 @@ const Trip = (props) => {
         <input type="text" placeholder="Search your trip" />
       </div>
       <div className="trip-cards slider gap-30 mb-5">
-        {/* <a href="#" class="control_next">
-          <GrFormNext />
-        </a>
-        <a href="#" class="control_prev">
-          <GrFormPrevious />
-        </a> */}
-        <div className="trip-card">
-          <img
-            src="https://media.cntraveler.com/photos/5a85a6cc833f8a477b94953e/master/w_1920%2Cc_limit/Musee-Picasso_Fabien-Campoverde_2018_BH4A5113fab.jpg"
-            alt="trip"
-          />
-          <div className="trip-text">
-            <div className="trip-destination">Berlin</div>
-            <div className="trip-date">20.04.2023-15.04.23</div>
-          </div>
-        </div>
-        <div className="trip-card">
-          <img
-            src="https://media.cntraveler.com/photos/5a93281d8087c02669a7dc07/master/w_1920%2Cc_limit/Arc%2520de%2520Triomphe_GettyImages-615063063.jpg"
-            alt="trip"
-          />
-          <div className="trip-text">
-            <div className="trip-destination">Paris</div>
-            <div className="trip-date">20.04.2023-15.04.23</div>
-          </div>
-        </div>
-        <button className="trip-add">
-          <div>
-            <AiOutlinePlus />
-            <br />
-            Add Trip
-          </div>
-        </button>
+        <Carousel items={[
+          <Card setTrip={setTrip} image="https://media.cntraveler.com/photos/5a85a6cc833f8a477b94953e/master/w_1920%2Cc_limit/Musee-Picasso_Fabien-Campoverde_2018_BH4A5113fab.jpg" city="Berlin" date1="20.11.2002" date2="20.12.2022" />,
+          <Card setTrip={setTrip} image="https://media.cntraveler.com/photos/5a93281d8087c02669a7dc07/master/w_1920%2Cc_limit/Arc%2520de%2520Triomphe_GettyImages-615063063.jpg" city="Paris" date1="32.11.3002" date2="12.1.2022" />,
+          <Card setTrip={setTrip} image="https://media.cntraveler.com/photos/5a85a6cc833f8a477b94953e/master/w_1920%2Cc_limit/Musee-Picasso_Fabien-Campoverde_2018_BH4A5113fab.jpg" city="Berlin" date1="20.11.2002" date2="20.12.2022" />,
+          <button className="trip-add" onClick={() => setModal('visible')}>
+            <div>
+              <AiOutlinePlus />
+              <br />
+              Add Trip
+            </div>
+          </button>
+        ]} />
+
       </div>
       <div className="week-weather">
         <h3>Week</h3>
-        <div className="week_forecast gap-30" style={{ height: "130px" }}>
-          <div className="day_forecast">
-            <div className="day_of_week">Monday</div>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-              alt="Weather Icon"
-            />
-            <div className="day_temperature">28C/21C</div>
-          </div>
-          <div className="day_forecast">
-            <div className="day_of_week">Monday</div>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-              alt="Weather Icon"
-            />
-            <div className="day_temperature">28C/21C</div>
-          </div>
-          <div className="day_forecast">
-            <div className="day_of_week">Monday</div>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-              alt="Weather Icon"
-            />
-            <div className="day_temperature">28C/21C</div>
-          </div>
-          <div className="day_forecast">
-            <div className="day_of_week">Monday</div>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-              alt="Weather Icon"
-            />
-            <div className="day_temperature">28C/21C</div>
-          </div>
-          <div className="day_forecast">
-            <div className="day_of_week">Monday</div>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-              alt="Weather Icon"
-            />
-            <div className="day_temperature">28C/21C</div>
-          </div>
-          <div className="day_forecast">
-            <div className="day_of_week">Monday</div>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-              alt="Weather Icon"
-            />
-            <div className="day_temperature">28C/21C</div>
-          </div>
-          <div className="day_forecast">
-            <div className="day_of_week">Monday</div>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-              alt="Weather Icon"
-            />
-            <div className="day_temperature">28C/21C</div>
-          </div>
+        <div className="week_forecast gap-30">
+          {weekWeather ? (
+            weekWeather.map((dayWeather, index) => (
+              <Day key={index}
+                weather={dayWeather}
+                day={daysOfWeek[dateToDayOfWeek(dayWeather.datetime)]}
+                image={img[dayWeather.icon]}
+                tempDay={Math.round(dayWeather.tempmax)}
+                tempNight={Math.round(dayWeather.tempmin)} />
+            ))
+          ) : null}
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

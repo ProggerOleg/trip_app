@@ -1,3 +1,4 @@
+import IMG from "../../assets/Images";
 import "./weather.css";
 
 
@@ -7,7 +8,8 @@ const WeatherCard = (props) => {
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const today = new Date();
   const dayOfWeek = daysOfWeek[today.getDay()];
-  const date = new Date().toLocaleDateString();
+  const img = new IMG()
+
 
   return (
     <section className="weather wrapper">
@@ -40,8 +42,8 @@ const WeatherCard = (props) => {
         <h2>{dayOfWeek}</h2>
         <div className="widget_weather">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/001/500/512/non_2x/cloudy-weather-icon-free-vector.jpg"
-            alt=""
+            src={img[weather.icon]}
+            alt="icon"
           />
           <div className="widget_temperature">
             {weather.temperature}
