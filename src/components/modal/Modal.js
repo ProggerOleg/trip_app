@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
+import { Cities } from '../../assets/Images';
 import { AiOutlineClose } from 'react-icons/ai';
 import './modal.css';
 
 const Modal = (props) => {
   const { modal, setModal, addTrips } = props;
+  const [city, setCity] = useState();
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const citiesImages = new Cities();
+
+  const transformDateFormat = (date) => {
+    const [year, month, day] = date.split("-");
+    const formattedMonth = (parseInt(month) < 10 ? `${month}` : month);
+    return [day, formattedMonth, year].join('.');
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Pass the collected values to the addTrips function
+    addTrips(citiesImages[`${city}`], city, transformDateFormat(startDate), transformDateFormat(endDate));
+    // Close the modal
+    setModal('hidden');
+  };
 
   const handleStartDateChange = (event) => {
     setStartDate(event.target.value);
@@ -34,9 +51,7 @@ const Modal = (props) => {
 
   return (
     <div className="modal" style={{ visibility: modal }}>
-      <form className="modal-wrapper" onSubmit={() => addTrips(
-        // (image, city, date1, date2)
-      )}>
+      <form className="modal-wrapper" onSubmit={handleSubmit}>
         <div className="modal-heading mb-5">
           <h2>Create trip</h2>
           <button onClick={(e) => {
@@ -54,6 +69,9 @@ const Modal = (props) => {
                 type="city"
                 className="form-control"
                 name="city"
+                onChange={(e) => {
+                  setCity(e.target.value);
+                }}
                 placeholder="Please select a city"
               />
             </div>

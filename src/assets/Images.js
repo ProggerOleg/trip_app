@@ -37,4 +37,13 @@ export class IMG {
 
     'rain-snow-showers-day' = rainSnowShowersDay
 }
+
+export class Cities {
+    'London' = 'https://a.cdn-hotels.com/gdcs/production153/d1371/e6c1f55e-51ac-41d5-8c63-2d0c63faf59e.jpg'
+    'Paris' = 'https://www.thetrainline.com/cms/media/1360/france-eiffel-tower-paris.jpg?mode=crop&width=1080&height=1080&quality=70'
+    'New york' = 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg'
+    'Kyiv' = 'https://lp-cms-production.imgix.net/2019-06/a6469f3993128cbcdde6e2b0a90aa1d3-kyiv.jpg'
+    'Moscow' = 'https://www.nationsonline.org/gallery/Russia/Red-Square-Moscow.jpg'
+}
+
 export default IMG;

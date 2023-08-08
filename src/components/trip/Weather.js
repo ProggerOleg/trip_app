@@ -1,4 +1,5 @@
 import IMG from "../../assets/Images";
+import { useState, useEffect } from "react";
 import "./weather.css";
 
 
@@ -9,6 +10,50 @@ const WeatherCard = (props) => {
   const today = new Date();
   const dayOfWeek = daysOfWeek[today.getDay()];
   const img = new IMG()
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    let timerInterval; // Declare the timerInterval variable
+
+    // Clear the previous timer interval, if any
+    clearInterval(timerInterval);
+
+    const targetDateParts = trip.date1.split('.');
+    const targetYear = parseInt(targetDateParts[2]);
+    const targetMonth = parseInt(targetDateParts[1]) - 1;
+    const targetDay = parseInt(targetDateParts[0]);
+
+    const targetDate = new Date(targetYear, targetMonth, targetDay);
+
+    const updateTimer = () => {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        clearInterval(timerInterval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
+    };
+
+    timerInterval = setInterval(updateTimer, 1000); // Assign the interval to timerInterval
+
+    return () => {
+      clearInterval(timerInterval);
+    };
+  }, [trip]);
+
 
 
   return (
@@ -54,22 +99,22 @@ const WeatherCard = (props) => {
       </div>
       <div className="timer">
         <div className="timer_col">
-          <b>30</b>
+          <b>{timeLeft.days}</b>
           <br />
           days
         </div>
         <div className="timer_col">
-          <b>10</b>
+          <b>{timeLeft.hours}</b>
           <br />
           hours
         </div>
         <div className="timer_col">
-          <b>23</b>
+          <b>{timeLeft.minutes}</b>
           <br />
           minutes
         </div>
         <div className="timer_col">
-          <b>34</b>
+          <b>{timeLeft.seconds}</b>
           <br />
           seconds
         </div>

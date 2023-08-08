@@ -18,7 +18,7 @@ const Carousel = ({ items }) => {
     const currentTransform = -activeIndex * (100 / (items.length - 2));
 
     const isPrevDisabled = activeIndex === 0;
-    const isNextDisabled = activeIndex + 3 >= items.length;
+    const isNextDisabled = activeIndex + 2 >= items.length;
 
     return (
         <div className="carousel-wrapper">

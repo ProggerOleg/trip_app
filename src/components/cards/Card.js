@@ -5,7 +5,7 @@ const Card = (props) => {
 
 
     return (
-        <div className="trip-card" onClick={() => setTrip({ city, date1, date2 })}>
+        <div className="trip-card" onClick={() => setTrip({ image, city, date1, date2 })}>
             <img
                 src={image}
                 alt="trip"

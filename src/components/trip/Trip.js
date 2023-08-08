@@ -46,21 +46,7 @@ const Trip = (props) => {
               Add Trip
             </div>
           </button>
-        ]
-
-          // [
-          //   <Card setTrip={setTrip} image="https://media.cntraveler.com/photos/5a85a6cc833f8a477b94953e/master/w_1920%2Cc_limit/Musee-Picasso_Fabien-Campoverde_2018_BH4A5113fab.jpg" city="Berlin" date1="20.11.2002" date2="20.12.2022" />,
-          //   <Card setTrip={setTrip} image="https://media.cntraveler.com/photos/5a93281d8087c02669a7dc07/master/w_1920%2Cc_limit/Arc%2520de%2520Triomphe_GettyImages-615063063.jpg" city="Paris" date1="32.11.3002" date2="12.1.2022" />,
-          //   <Card setTrip={setTrip} image="https://media.cntraveler.com/photos/5a85a6cc833f8a477b94953e/master/w_1920%2Cc_limit/Musee-Picasso_Fabien-Campoverde_2018_BH4A5113fab.jpg" city="Berlin" date1="20.11.2002" date2="20.12.2022" />,
-          // <button button className="trip-add" onClick={() => setModal('visible')}>
-          //   <div>
-          //     <AiOutlinePlus />
-          //     <br />
-          //     Add Trip
-          //   </div>
-          // </button>
-          // ]
-        } />
+        ]} />
 
       </div>
       <div className="week-weather">

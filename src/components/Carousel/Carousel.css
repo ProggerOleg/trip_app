@@ -15,6 +15,7 @@
   object-fit: cover;
   overflow: hidden;
 }
+
 @media (min-width: 768px) {
   .carousel-item {
     width: 50%;
