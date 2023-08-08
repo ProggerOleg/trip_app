@@ -9,7 +9,12 @@ const Modal = (props) => {
   const [city, setCity] = useState();
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [showLogin, setShowLogin] = useState(true)
   const citiesImages = new Cities();
+
+  const updateLoginState = (newState) => {
+    setShowLogin(newState);
+  };
 
   const transformDateFormat = (date) => {
     const [year, month, day] = date.split("-");
@@ -62,7 +67,10 @@ const Modal = (props) => {
             <AiOutlineClose size={20} />
           </button>
         </div>
-        <div style={{ width: '40%', margin: 'auto', display: 'flex', justifyContent: 'space-around' }}><Login /></div>
+        <div style={{ width: '40%', margin: 'auto', display: 'flex', justifyContent: 'space-around' }}>
+          {showLogin && <Login updateParentState={updateLoginState} />}
+
+        </div>
 
         <div className="modal-trip mb-5">
           <div className='form-inputs'>

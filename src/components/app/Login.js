@@ -6,30 +6,28 @@ import { GoogleLogin } from '@react-oauth/google';
 // Import this from the lib
 import { useGoogleLogin } from '@react-oauth/google';
 
-function Login() {
+function Login({ updateParentState }) {
 
-    // Use this function to trigger the
-    // "LogIn With Google" process
-    // at the end of which the onSuccess function
-    // is triggered
     const login = useGoogleLogin({
-        onSuccess: codeResponse => console.log(codeResponse)
+        onSuccess: codeResponse => {
+            console.log(codeResponse);
+            updateParentState(false);
+        }
     });
 
     return (
         <div className="Login">
             <header className="Login-header">
-
                 <GoogleLogin
                     onSuccess={credentialResponse => {
                         console.log(credentialResponse);
+                        updateParentState(false);
                     }}
                     shape="rectangular"
                     onError={() => {
                         console.log('Login Failed');
                     }}
                 />
-
             </header>
         </div>
     );
