@@ -81,6 +81,9 @@
 .trip-add div{
     text-align: center;
 }
+.week-weather{
+    min-height: 10rem;
+}
 .week-weather h3{
     font-size: 400;
 }

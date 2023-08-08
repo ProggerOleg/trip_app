@@ -7,6 +7,12 @@ import './Carousel.css';
 const Carousel = ({ items }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
+    if (window.innerWidth < 768) {
+        const modileCoef = 2;
+    } else {
+        const modileCoef = 1;
+    }
+
     const handleNext = () => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
     };
@@ -15,10 +21,10 @@ const Carousel = ({ items }) => {
         setActiveIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
     };
 
-    const currentTransform = -activeIndex * (100 / (items.length - 2));
+    const currentTransform = (-activeIndex * (100 / (items.length - 2)));
 
     const isPrevDisabled = activeIndex === 0;
-    const isNextDisabled = activeIndex + 2 >= items.length;
+    const isNextDisabled = activeIndex + 3 >= items.length;
 
     return (
         <div className="carousel-wrapper">

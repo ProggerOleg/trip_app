@@ -18,6 +18,12 @@ const Trip = (props) => {
     return dateObject.getDay()
   }
 
+  const [searchText, setSearchText] = useState("");
+
+  const filteredTrips = trips.filter((trip) =>
+    trip.city.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <section className="trip wrapper">
       <div className="trip header mb-5">
@@ -25,11 +31,16 @@ const Trip = (props) => {
       </div>
       <div className="search gap-15 mb-5">
         <FiSearch size={"30px"} />
-        <input type="text" placeholder="Search your trip" />
+        <input
+          type="text"
+          placeholder="Search your trip"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
       </div>
       <div className="trip-cards slider gap-30 mb-5">
         <Carousel items={[
-          ...trips.map((data, index) => (
+          ...filteredTrips.map((data, index) => (
             <Card
               key={index}
               setTrip={setTrip}
@@ -64,7 +75,7 @@ const Trip = (props) => {
           ) : null}
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

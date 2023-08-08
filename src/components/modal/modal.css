@@ -46,7 +46,7 @@
     font-weight: 500;
     margin-bottom: 10px;
 }
-.form-inputs .mb-3 input{
+.form-inputs .mb-3 input, .form-inputs .mb-3 select{
     padding: 0 10px;
     height: 2.5rem;
     font-size: 1rem;

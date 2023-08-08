@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Login from '../app/Login';
 import { Cities } from '../../assets/Images';
 import { AiOutlineClose } from 'react-icons/ai';
 import './modal.css';
@@ -61,19 +62,25 @@ const Modal = (props) => {
             <AiOutlineClose size={20} />
           </button>
         </div>
+        <div style={{ width: '40%', margin: 'auto', display: 'flex', justifyContent: 'space-around' }}><Login /></div>
+
         <div className="modal-trip mb-5">
           <div className='form-inputs'>
             <div className="mb-3">
               <label className="form-label">City</label>
-              <input
-                type="city"
+              <select
                 className="form-control"
                 name="city"
-                onChange={(e) => {
-                  setCity(e.target.value);
-                }}
-                placeholder="Please select a city"
-              />
+                value={city} // Make sure to set the value of the select to the current city
+                onChange={(e) => setCity(e.target.value)}
+              >
+                <option value="">Please select a city</option>
+                {Object.keys(citiesImages).map((cityKey) => (
+                  <option key={cityKey} value={cityKey}>
+                    {cityKey}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mb-3">
               <label className="form-label">Start date</label>

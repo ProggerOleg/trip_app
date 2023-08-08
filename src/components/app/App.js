@@ -34,8 +34,8 @@ function App() {
         }
       ]))
     }
-    setTrips(storedData); // Set the array of trips
-    // setTrip(storedData[0]); // Set the first trip as the default trip
+    setTrips(sortTrips(storedData ? storedData : []));
+    setTrip(sortTrips(storedData ? storedData : [])[0]);
   }, []);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function App() {
 
   const addTrips = (image, city, date1, date2) => {
     const newTrip = { image, city, date1, date2 };
-    setTrips((prevData) => [...prevData, newTrip]);
+    setTrips((prevData) => sortTrips([...prevData, newTrip]));
   };
 
   useEffect(() => {
@@ -62,6 +62,13 @@ function App() {
       localStorage.setItem("cardData", JSON.stringify(trips));
     }
   }, [trips]);
+
+  // Сортируем поездки по начальной дате
+  const sortTrips = (arr) => [...arr].sort((a, b) => {
+    const dateA = new Date(a.date1.split(".").reverse().join("-"));
+    const dateB = new Date(b.date1.split(".").reverse().join("-"));
+    return dateA - dateB;
+  });
 
   return (
     <div className="App">
