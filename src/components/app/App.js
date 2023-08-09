@@ -34,21 +34,27 @@ function App() {
         }
       ]))
     }
-    setTrips(sortTrips(storedData ? storedData : []));
-    setTrip(sortTrips(storedData ? storedData : [])[0]);
+    const sortedTrips = sortTrips(storedData ? storedData : [{
+      "image": "https://media.cntraveler.com/photos/5a85a6cc833f8a477b94953e/master/w_1920%2Cc_limit/Musee-Picasso_Fabien-Campoverde_2018_BH4A5113fab.jpg",
+      "city": "Kyiv",
+      "date1": "20.08.2023",
+      "date2": "26.08.2023"
+    }]);
+    setTrips(sortedTrips);
+    setTrip(sortedTrips[0]);
   }, []);
 
   useEffect(() => {
     if (trip.city !== "") {
-      getTodaysWeather(trip.city)
-        .then(item => {
-          setWeather({ temperature: Math.round(item.days[0].temp), icon: item.days[0].icon })
-        })
-        .catch(e => console.log(e))
+      // getTodaysWeather(trip.city)
+      //   .then(item => {
+      //     setWeather({ temperature: Math.round(item.days[0].temp), icon: item.days[0].icon })
+      //   })
+      //   .catch(e => console.log(e))
 
-      getForecast(trip.city, transformDateFormat(trip.date1), transformDateFormat(trip.date2)).then(item => {
-        setWeekWeather(item.days)
-      })
+      // getForecast(trip.city, transformDateFormat(trip.date1), transformDateFormat(trip.date2)).then(item => {
+      //   setWeekWeather(item.days)
+      // })
     }
   }, [trip])
 
