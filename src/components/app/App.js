@@ -46,15 +46,15 @@ function App() {
 
   useEffect(() => {
     if (trip.city !== "") {
-      // getTodaysWeather(trip.city)
-      //   .then(item => {
-      //     setWeather({ temperature: Math.round(item.days[0].temp), icon: item.days[0].icon })
-      //   })
-      //   .catch(e => console.log(e))
+      getTodaysWeather(trip.city)
+        .then(item => {
+          setWeather({ temperature: Math.round(item.days[0].temp), icon: item.days[0].icon })
+        })
+        .catch(e => console.log(e))
 
-      // getForecast(trip.city, transformDateFormat(trip.date1), transformDateFormat(trip.date2)).then(item => {
-      //   setWeekWeather(item.days)
-      // })
+      getForecast(trip.city, transformDateFormat(trip.date1), transformDateFormat(trip.date2)).then(item => {
+        setWeekWeather(item.days)
+      })
     }
   }, [trip])
 
